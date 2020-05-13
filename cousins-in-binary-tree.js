@@ -15,30 +15,31 @@
 
 //using object to store child and parent vals
 var isCousins = function (root, x, y) {
-  let childrenNodes = {};
+  let valObj = {};
   let allNodes = [root, 'stop'];
+
   while (allNodes.length > 1) {
     let remove = allNodes.shift();
     if (remove !== 'stop') {
       if (remove.left) {
-        childrenNodes[remove.left.val] = remove.val;
+        valObj[remove.left.val] = remove.val;
         allNodes.push(remove.left);
       }
       if (remove.right) {
-        childrenNodes[remove.right.val] = remove.val;
+        valObj[remove.right.val] = remove.val;
         allNodes.push(remove.right);
       }
     } else {
       allNodes.push(remove);
       if (
-        Object.keys(childrenNodes).includes(x.toString()) &&
-        Object.keys(childrenNodes).includes(y.toString())
+        Object.keys(valObj).includes(x.toString()) &&
+        Object.keys(valObj).includes(y.toString())
       ) {
-        if (childrenNodes[x] !== childrenNodes[y]) {
+        if (valObj[x] !== valObj[y]) {
           return true;
         }
       }
-      childrenNodes = {};
+      valObj = {};
     }
   }
   return false;
