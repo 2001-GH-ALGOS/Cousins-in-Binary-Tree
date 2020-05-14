@@ -30,10 +30,7 @@ var isCousins = function (root, x, y) {
         allNodes.push(remove.right);
       }
     } else {
-      if (
-        Object.keys(valObj).includes(x.toString()) &&
-        Object.keys(valObj).includes(y.toString())
-      ) {
+      if (valObj[x] && valObj[y]) {
         if (valObj[x] !== valObj[y]) {
           return true;
         }
