@@ -30,7 +30,6 @@ var isCousins = function (root, x, y) {
         allNodes.push(remove.right);
       }
     } else {
-      allNodes.push(remove);
       if (
         Object.keys(valObj).includes(x.toString()) &&
         Object.keys(valObj).includes(y.toString())
@@ -39,6 +38,7 @@ var isCousins = function (root, x, y) {
           return true;
         }
       }
+      allNodes.push(remove);
       valObj = {};
     }
   }
